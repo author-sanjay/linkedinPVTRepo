@@ -1,0 +1,55 @@
+Front End
+1. Login (UserName/Email/Phonenumber, Password, Signup?, submit, Auth provider, Forgot password,  Remember Device / Keep me Logged in) 
+2. Sign up Page (User Pass?? , fN, LN, Email, Phone, DOB, Gender(op), submit, login? verify, AUth providers )
+3. Home Page
+4. Profile
+5. DMs
+6.  Notification
+7. Job Search
+8. Settings
+Create Post
+9. Contact Page
+10. T&C Page
+
+
+Backend :
+1. Users 
+	Name
+	Profile Pic
+	Email
+	access-token
+	refresh_token
+	List<Users> following
+	List<Users> followers
+	List<Users> Messageswith
+	List<Posts> saved;
+	List<Jobs> savedJob;
+	List<Jobs> appliedJobs;
+
+2. Posts
+3. Jobs
+
+
+
+API:
+1. Create Update Read Delete for users
+	a. Forget Password
+	b. Interact With Other users post 
+	c. Repost 
+	d. Follow someone
+	e. Explore 
+ 	f. Notifications
+	g. Profile QR Code
+	h. Apply to Job
+	   Delete Account
+	   Get Saved Items
+	   Post Saved Items
+	   Deleted Saved Post
+	   Report User
+2. CURD for Posts
+3. CURD for Jobs
+	a. Mark as hired
+	b. Report job
+	c. Add Job pref
+	d. RSS feed
+4. Search (apply filter) 
