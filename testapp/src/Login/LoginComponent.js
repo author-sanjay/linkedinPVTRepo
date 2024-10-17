@@ -1,12 +1,20 @@
 import React, { useEffect, useState } from "react";
 import { CircleCheckBig, CircleX } from "lucide-react";
 import { useUser } from "../Context/UserContext";
+import { useDispatch, useSelector } from "react-redux";
+import { setUserObject } from "../Store/UserDataStore";
 const LoginComponent = ({ userData, setUserData }) => {
   const [credValid, setCredValid] = useState(0);
   const { setUser, userObject } = useUser();
+  const dispatch = useDispatch();
+  const userFromRedux = useSelector((state) => state.userDataStore.userObject);
+
+  useEffect(() => {
+    console.log(userFromRedux);
+  }, [userFromRedux]);
   function validateEmail(email) {
     const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-    console.log(emailPattern.test(email))
+    console.log(emailPattern.test(email));
     return emailPattern.test(email);
   }
 
@@ -18,8 +26,11 @@ const LoginComponent = ({ userData, setUserData }) => {
   const handleLoginFormSubmit = () => {
     if (validateEmail(userData.email) && validatePassword(userData.password)) {
       setCredValid(true);
-      setUser({ email: userData.email, password: userData.password });
-      console.log(userObject);
+      // setUser({ email: userData.email, password: userData.password });
+      // console.log(userObject);
+      dispatch(
+        setUserObject({ email: userData.email, password: userData.password })
+      );
     } else {
       if (!validateEmail(userData.email)) {
         alert("Please enter a valid email");
