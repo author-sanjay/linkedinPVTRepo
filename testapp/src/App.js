@@ -1,9 +1,12 @@
 import Login from "./Login/Login";
-import "./App.css"
+import "./App.css";
+import { useUser } from "./Context/UserContext";
 function App() {
+  
+  const { userObject, setUser } = useUser();
   return (
     <div className="">
-      <Login />
+      <Login setUser={setUser} />
     </div>
   );
 }

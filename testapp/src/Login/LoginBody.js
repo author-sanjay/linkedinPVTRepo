@@ -2,12 +2,9 @@ import React, { useEffect, useState } from "react";
 import "./Login.css";
 import LoginComponent from "./LoginComponent";
 import SignUpComponent from "./SignUpComponent";
-const LoginBody = () => {
+const LoginBody = ({ email, setEmailAddress }) => {
   const [userData, setUserData] = useState({ login: true });
-  
-  useEffect(() => {
-    
-  }, [userData]);
+  // useEffect(() => {}, [userData]);
   return (
     <div
       className=""
@@ -59,7 +56,7 @@ const LoginBody = () => {
             userSelect: "none",
           }}
           onClick={() => {
-            setUserData({...userData,login:!userData.login})
+            setUserData({ ...userData, login: !userData.login });
           }}
         >
           {userData.login ? "Signup" : "Login"}

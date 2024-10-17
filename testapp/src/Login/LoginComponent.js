@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { CircleCheckBig, CircleX } from "lucide-react";
+import { useUser } from "../Context/UserContext";
 const LoginComponent = ({ userData, setUserData }) => {
-  const [credValid, setCredValid] = useState(false);
+  const [credValid, setCredValid] = useState(0);
+  const { setUser, userObject } = useUser();
   function validateEmail(email) {
     const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    console.log(emailPattern.test(email))
     return emailPattern.test(email);
   }
 
@@ -13,8 +16,10 @@ const LoginComponent = ({ userData, setUserData }) => {
     return passwordPattern.test(password);
   }
   const handleLoginFormSubmit = () => {
-    if (validateEmail(userData.email) && validatePassword(userData.passWord)) {
+    if (validateEmail(userData.email) && validatePassword(userData.password)) {
       setCredValid(true);
+      setUser({ email: userData.email, password: userData.password });
+      console.log(userObject);
     } else {
       if (!validateEmail(userData.email)) {
         alert("Please enter a valid email");
@@ -58,7 +63,7 @@ const LoginComponent = ({ userData, setUserData }) => {
             outline: "none",
           }}
           placeholder="Email Address"
-          value={userData?.userEmail}
+          value={userData?.email}
           onChange={(e) => {
             setUserData({ ...userData, email: e.target.value });
           }}
@@ -97,18 +102,18 @@ const LoginComponent = ({ userData, setUserData }) => {
           }}
           placeholder="Password"
           onChange={(e) => {
-            setUserData({ ...userData, passWord: e.target.value });
+            setUserData({ ...userData, password: e.target.value });
           }}
-          value={userData?.userPassword}
+          value={userData?.password}
         />
-        {!userData?.passWord || userData?.pass?.length == 0 ? (
+        {!userData?.password || userData?.password?.length == 0 ? (
           <></>
         ) : credValid ? (
           <CircleCheckBig color="green" />
         ) : (
           <CircleX color="red" />
         )}
-        <div className='' ></div>
+        <div className=""></div>
       </div>
       <div
         className=""

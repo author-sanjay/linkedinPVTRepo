@@ -19,17 +19,11 @@ function Login() {
       console.log("Email Invalid", email);
     }
   }, [email]);
-  
 
-  const clickButton = () => {
-    setCounter((counter) => counter + 1);
-    // console.log(counter)
-  };
   return (
     <div className="loginContainer">
-
       <LoginHeader />
-      <LoginBody />
+      <LoginBody email={email} setEmailAddress={setEmail} />
       <LoginBottomSection />
     </div>
   );

@@ -1,13 +1,16 @@
 import { CircleCheckBig, CircleX } from "lucide-react";
 import React, { useEffect, useState } from "react";
+import { useUser } from "../Context/UserContext";
 
 const SignUpComponent = ({ userData, setUserData }) => {
+  const { userObject } = useUser();
   const [validator, setValidator] = useState({
     email: false,
     password: false,
     confirmPassword: false,
   });
-
+  const [apiResult, setApiResult] = useState(null);
+  const [loading, setLoading] = useState(true);
   function validateEmail(email) {
     const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     return emailPattern.test(email);
@@ -18,19 +21,33 @@ const SignUpComponent = ({ userData, setUserData }) => {
       /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
     return passwordPattern.test(password);
   }
-  useEffect(() => {
- setValidator((prevValidator) => ({
-   ...prevValidator,
-   email: validateEmail(userData.email),
-   password: validatePassword(userData.passWord),
-   confirmPassword:
-     userData?.passWord?.length > 0 &&
-     userData?.userConfirmPassword?.length > 0 &&
-     userData.passWord === userData.userConfirmPassword,
- }));
 
+  function apiCall() {
+    // Wait for API call to complete
+    setApiResult("cjhjads");
+  }
+
+  useEffect(() => {
+    if (apiResult) {
+      setLoading(false);
+    } else {
+      setLoading(true);
+    }
+  }, [apiResult]);
+  useEffect(() => {
+    setValidator((prevValidator) => ({
+      ...prevValidator,
+      email: validateEmail(userData.email),
+      password: validatePassword(userData.passWord),
+      confirmPassword:
+        userData?.passWord?.length > 0 &&
+        userData?.userConfirmPassword?.length > 0 &&
+        userData.passWord === userData.userConfirmPassword,
+    }));
   }, [userData]);
-  return (
+  return loading ? (
+    <div className="">Loading</div>
+  ) : (
     <div
       className=""
       style={{
@@ -66,15 +83,18 @@ const SignUpComponent = ({ userData, setUserData }) => {
             outline: "none",
           }}
           placeholder="Email Address"
-          value={userData?.userEmail}
+          value={userData?.email}
           onChange={(e) => {
             setUserData({ ...userData, email: e.target.value });
           }}
         />
-        {validator.email ? (
+
+        {userData?.email && validator?.email ? (
           <CircleCheckBig color="green" />
-        ) : (
+        ) : userData?.email && !validator?.email ? (
           <CircleX color="red" />
+        ) : (
+          <></>
         )}
       </div>
       <div
@@ -107,10 +127,12 @@ const SignUpComponent = ({ userData, setUserData }) => {
             setUserData({ ...userData, passWord: e.target.value });
           }}
         />
-        {validator.password ? (
+        {userData.password && validator.password ? (
           <CircleCheckBig color="green" />
-        ) : (
+        ) : userData.password && !validator.password ? (
           <CircleX color="red" />
+        ) : (
+          <></>
         )}
       </div>
       <div
@@ -142,10 +164,12 @@ const SignUpComponent = ({ userData, setUserData }) => {
             setUserData({ ...userData, userConfirmPassword: e.target.value });
           }}
         />
-        {validator.confirmPassword ? (
+        {userData.password && validator.confirmPassword ? (
           <CircleCheckBig color="green" />
-        ) : (
+        ) : userData.password && !validator.confirmPassword ? (
           <CircleX color="red" />
+        ) : (
+          <></>
         )}
       </div>
       <div
