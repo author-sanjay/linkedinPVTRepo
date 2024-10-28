@@ -32,4 +32,8 @@ model Post {
 
 }
 
+//JObs modal
+//  -> User (what job user is doing)
+//  -> User (what job user is applying) (array)
+//  -> Post (that post has some job opening)
 
