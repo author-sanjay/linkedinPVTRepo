@@ -33,7 +33,7 @@ model Post {
 }
 
 //JObs modal
-//  -> User (what job user is doing)
-//  -> User (what job user is applying) (array)
-//  -> Post (that post has some job opening)
+//  -> User (what job user is doing) (many to one)
+//  -> User (what job user is applying) (array) ( one to many)
+//  -> Post (that post has some job opening) (one to one)
 
