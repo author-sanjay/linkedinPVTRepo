@@ -1,9 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -14,14 +8,17 @@ datasource db {
 }
 
 model User {
-  id       Int    @id @default(autoincrement())
-  name     String
-  email    String @unique
-  password String
-  country  String?
-  city     String?
-  address  String?
-  posts    Post[]
+  id              Int     @id @default(autoincrement())
+  name            String
+  email           String  @unique
+  password        String
+  country         String?
+  city            String?
+  address         String?
+  posts           Post[]
+  jobDoing        Job?    @relation(fields: [jobDoingId], references: [id])
+  jobDoingId      Int? // Foreign key to the Job model
+  jobApplications Job[]   @relation("UserApplyingForJobs") // One-to-many relation (user applies to many jobs)
 }
 
 model Post {
@@ -29,11 +26,15 @@ model Post {
   content String
   user    User   @relation(fields: [author], references: [id])
   author  Int
-
+  job     Job?   @relation("PostJob") // One-to-one relation (one post has one job)
 }
 
-//JObs modal
-//  -> User (what job user is doing) (many to one)
-//  -> User (what job user is applying) (array) ( one to many)
-//  -> Post (that post has some job opening) (one to one)
-
+model Job {
+  id            Int    @id @default(autoincrement())
+  title         String
+  description   String
+  usersDoing    User[] @relation(fields: [], references: []) // Multiple users can do the same job
+  usersApplying User[] @relation("UserApplyingForJobs") // Many users can apply for one job
+  post          Post?  @relation("PostJob", fields: [postId], references: [id]) // One job corresponds to one post
+  postId        Int?   @unique // Ensure uniqueness for one-to-one relation with Post
+}
