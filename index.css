@@ -1,0 +1,39 @@
+.loginFormContainer {
+  background-color: #b1a78e;
+  height: 100vh;
+  width: 100vw;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.loginForm {
+    width: 25%;
+    background-color: #f7f3e9;
+    padding: 2%;
+    border-radius: 2vh;
+    height: 60%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.loginFormHeader{
+    width: 25%;
+    height: 25%;
+    position: absolute;
+    top: 10%;
+
+}
+.headerImage{
+    height: 100%;
+    width: 100%;
+    border-radius: 2vh;
+}
+.loginFOrmInputField{
+    margin-top: 5%;
+}
