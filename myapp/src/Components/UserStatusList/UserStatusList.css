@@ -1,0 +1,27 @@
+.userStatusListContainer {
+  height: 100%;
+  display: flex;width: 5%;
+  flex-direction: column;
+  background-color: #202C33;
+  justify-content: space-between;
+  align-items: center;
+}
+.statusTopList {
+  display: flex;
+  align-items: center;
+  padding-top: 30%;
+  flex-direction: column;
+  height: 15%;
+  justify-content: space-between;
+}
+.statusBottomList{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    height: 8%;
+
+}
+.singleIconContainer:hover{
+    cursor: pointer;
+}
