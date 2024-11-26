@@ -1,8 +1,9 @@
 .userStatusListContainer {
   height: 100%;
-  display: flex;width: 5%;
+  display: flex;
+  width: 5%;
   flex-direction: column;
-  background-color: #202C33;
+  background-color: #202c33;
   justify-content: space-between;
   align-items: center;
 }
@@ -11,17 +12,35 @@
   align-items: center;
   padding-top: 30%;
   flex-direction: column;
-  height: 15%;
+  height: 25%;
   justify-content: space-between;
 }
-.statusBottomList{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-direction: column;
-    height: 8%;
-
+.statusBottomList {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+  height: 8%;
 }
-.singleIconContainer:hover{
-    cursor: pointer;
+.singleIconContainer:hover {
+  cursor: pointer;
+  padding: 20% 30%;
+  border-radius: 20%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(218, 218, 218, 0.275);
+}
+.selected {
+  background-color: white;
+  color: black;
+  padding: 20% 30%;
+  border-radius: 20%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.selected:hover {
+  background-color: rgb(163, 202, 164);
 }
