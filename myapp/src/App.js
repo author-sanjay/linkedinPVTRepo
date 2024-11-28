@@ -1,7 +1,8 @@
+import AuthSelectScreen from "./Screens/AuthSelectScreen";
 import ChatDashboard from "./Screens/ChatDashboard";
 
 function App() {
-  return <><ChatDashboard/></>
+  return <><AuthSelectScreen/></>
 }
 
 export default App;
