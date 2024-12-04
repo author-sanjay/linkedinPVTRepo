@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./ChatDashboard.css";
 import UserStatusList from "../Components/UserStatusList/UserStatusList";
-import UserChatList from "../Components/UserChatList/UserChatList";
+import UserChatList from "../Components/UserChatList/UserChatList/UserChatList";
 import UserChatBox from "../Components/UserChatBox/UserChatBox";
 import axios from "axios";
 const ChatDashboard = () => {

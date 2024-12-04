@@ -1,12 +1,19 @@
 import React, { useState } from "react";
-import { Undo2 } from "lucide-react";
+import { ArrowUpDown, Undo2 } from "lucide-react";
 import LoginScreen from "./LoginScreen";
 import ChatDashboard from "./ChatDashboard";
+import JokesScreen from "./JokesScreen";
 const AuthSelectScreen = () => {
   const [selectedScreen, setSelectedScreen] = useState("Login");
   return (
     <>
-      {selectedScreen === "Login" ? <LoginScreen /> : <ChatDashboard />}
+      {selectedScreen === "Login" ? (
+        <LoginScreen />
+      ) : selectedScreen === "Chat" ? (
+        <ChatDashboard />
+      ) : (
+        <JokesScreen />
+      )}
       <div
         style={{
           position: "absolute",
@@ -21,10 +28,16 @@ const AuthSelectScreen = () => {
           borderRadius: "2vw",
         }}
         onClick={() => {
-          setSelectedScreen(selectedScreen === "Login" ? "Chat" : "Login");
+          setSelectedScreen(
+            selectedScreen === "Login"
+              ? "Chat"
+              : selectedScreen === "Chat"
+              ? "Joke"
+              : "Login"
+          );
         }}
       >
-        <Undo2 />
+        <ArrowUpDown />
       </div>
     </>
   );

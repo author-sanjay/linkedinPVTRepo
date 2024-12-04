@@ -1,0 +1,23 @@
+.userChatListHeaderContainer {
+  height: 8%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0% 5%;
+}
+
+.userChatListHeaderIconsContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+  width: 15%;
+}
+
+.userChatListHeaderSingleIcon{
+    cursor: pointer;
+}
+.userChatListHeaderText{
+    font-weight: 600;
+    font-size: larger;
+}
